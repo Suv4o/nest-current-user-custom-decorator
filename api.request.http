@@ -39,7 +39,7 @@ Content-Type: application/json
 
 ### Good Morning Protected Endpoint (ADMIN)
 
-GET http://localhost:3001/morning HTTP/1.1
+GET http://localhost:3000/morning HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {USER_ACCESS_TOKEN}
 

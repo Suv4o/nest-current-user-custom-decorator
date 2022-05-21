@@ -14,11 +14,9 @@ export class CurrentUserInterceptor implements NestInterceptor {
   async intercept(context: ExecutionContext, handler: CallHandler) {
     const app = this.admin.setup();
     const request = context.switchToHttp().getRequest();
-    const idToken = context.getArgs()[0]?.headers?.authorization.split(' ')[1];
 
     try {
-      const decodedToken = await app.auth().verifyIdToken(idToken);
-      const user = await app.auth().getUser(decodedToken.uid);
+      const user = await app.auth().getUser(request.claims.uid);
       request.currentUser = user;
     } catch (error) {
       console.log('Error', error);
